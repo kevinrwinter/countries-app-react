@@ -5,8 +5,10 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import { LinkContainer } from "react-router-bootstrap";
+import { useSelector } from "react-redux";
 
 const Layout = () => {
+  const favourites = useSelector((state) => state.favourites);
   return (
     <Container fluid>
       <Row>
@@ -20,6 +22,9 @@ const Layout = () => {
                 </LinkContainer>
                 <LinkContainer to="/countries">
                   <Nav.Link>Countries</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to="/favourites">
+                  <Nav.Link>Favourites {favourites.length > 0 ? `(${favourites.length})` : `(0)`}</Nav.Link>
                 </LinkContainer>
               </Nav>
             </Navbar.Collapse>

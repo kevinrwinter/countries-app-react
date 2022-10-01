@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+// import countryService from "../../services/countries";
 
 import getAll from "../../services/countries";
 
@@ -21,6 +22,10 @@ export const countriesSlice = createSlice({
     },
   },
 });
+
+// const [countries, setCountries] = useState([]);
+// const [isLoading, setIsLoading] = useState(true);
+// const [search, setSearch] = useState('');
 
 // Middleware getting data for useEffect
 export const initializeCountries = () => {
