@@ -1,32 +1,24 @@
-import { Route, Routes } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import CountriesSingle from "./components/CountriesSingle";
+import Layout from "./pages/Layout";
 
+import "bootstrap-icons/font/bootstrap-icons.css";
 import CountriesList from "./components/CountriesList";
-// import CountrySingle from "./components/CountrySingle";
 
-// import "./App.css";
-
-function App() {
+const App = () => {
   return (
-    <>
-      <header className="header">
-        <div className="container">
-          <h5>Countries App</h5>
-        </div>
-      </header>
-      <div className="container">
-        <Routes>
-          <Route
-            path="/"
-            element={<CountriesList />}
-          />
-          {/* <Route
-            path="/country/:countryName"
-            element={<CountrySingle />}
-          /> */}
-        </Routes>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/countries" element={<CountriesList />} />
+          <Route path="/countries/:single" element={<CountriesSingle />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
