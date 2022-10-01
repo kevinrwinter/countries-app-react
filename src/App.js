@@ -1,65 +1,41 @@
-import axios from "axios";
-import { useState } from "react";
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Countries from "./components/Countries";
+import CountriesSingle from "./components/CountriesSingle";
+import CountriesFavourites from "./components/CountriesFavourites";
+import Layout from "./pages/Layout";
 
-function App() {
-  // const [data, setData] = useState({});
-  const [data, setData] = useState([]);
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { useDispatch, useSelector } from "react-redux";
+import { initializeCountries } from "./features/countries/countriesSlice";
+import { updateLocalStorage } from "./features/favourites/favouritesSlice";
 
-  // const getCountryData = () => {};
+const App = () => {
+  const dispatch = useDispatch();
 
-  // const fetchFinland = fetch("https://restcountries.com/v3.1/name/finland");
+  const favouritesData = useSelector((state) => state.favourites);
 
-  // Promise.all(fetchFinland)
-  //   .then(async (res) => {
-  //     const countryResponse = await res.json();
+  useEffect(() => {
+    dispatch(initializeCountries());
+  }, [dispatch]);
 
-  //     console.log(countryResponse);
-  //   })
-  //   .catch((err) => console.log(err));
-
-  const url = "https://restcountries.com/v3.1/name/finland";
-  // const url = "https://restcountries.com/v3.1/all";
-
-  const getCountryData = (e) => {
-    if (e.key === "Enter") {
-      axios
-        .get(url)
-        .catch((error) => {
-          console.log(error);
-        })
-        .then((res) => {
-          setData(res.data);
-          // console.log(res.data);
-          console.log(res.data);
-          console.log(res.data[0].population);
-          // console.log(Object.values(res.data));
-          // console.log(Object.values(data));
-        });
-    }
-  };
+  useEffect(() => {
+    dispatch(updateLocalStorage(favouritesData));
+  }, [dispatch, favouritesData]);
 
   return (
-    <div className="App">
-      <div className="container">
-        <h1>Countries</h1>
-        <input type="text" onChange={(e) => getCountryData(e.target.value)} onKeyDown={getCountryData} />
-        <div className="country-card">
-          <p>language</p>
-
-          {/* Margit code: */}
-          {/* {Object.values(languages || {}).map((value, i) => (
-            <span key={i}>{(i ? ", " : "") + value.name}</span>
-          ))} */}
-
-          {data.map((country) => (
-            // <p>Language: {country.language}</p>
-            // <p>Currencies: {country.currencies}</p>
-            <p>Population: {country.population}</p>
-          ))}
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/countries" element={<Countries />} />
+          <Route path="/countries/:single" element={<CountriesSingle />} />
+          <Route path="/favourites" element={<CountriesFavourites />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
