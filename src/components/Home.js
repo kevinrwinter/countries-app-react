@@ -1,10 +1,14 @@
 import React from "react";
+import { StyledHome } from "./styled/components";
 
 const Home = () => {
   return (
-    <div>
-      <div>
-        <span>Countries app </span>is a simple React application made in Business College Helsinki lessons. App uses{" "}
+    <div className="container">
+      <StyledHome />
+      <div className="home-text">
+        <span className="bold">Countries App </span>is a simple web application made with{" "}
+        <span className="bold">React</span> and <span className="bold">Redux Toolkit</span> in Business College Helsinki
+        lessons. The app uses data from the public APIs{" "}
         <a href="https://restcountries.com/" target="_blank" rel="noreferrer">
           restcountries.com
         </a>{" "}
