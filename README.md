@@ -10,3 +10,5 @@ Countries app made with React and Redux Toolkit.
 - [bootstrap](https://www.npmjs.com/package/bootstrap)
 - [react-router-bootstrap](https://www.npmjs.com/package/react-router-bootstrap)
 - [bootstrap-icons](https://www.npmjs.com/package/bootstrap-icons)
+- [styled-components](https://www.npmjs.com/package/styled-components)
+- [npm i easy-number-formatter](https://www.npmjs.com/package/easy-number-formatter)

@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Col, Container, Row, Spinner } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 
 import { initializeCountries } from "../features/countries/countriesSlice";
 import SearchInput from "./SearchInput";
 import CountryCard from "./CountryCard";
-import { Col, Container, Row, Spinner } from "react-bootstrap";
+import BackToTopBtn from "./BackToTopBtn";
 
 const Countries = () => {
   const dispatch = useDispatch();
@@ -46,6 +46,7 @@ const Countries = () => {
             </Col>
           ))}
       </Row>
+      <BackToTopBtn />
     </Container>
   );
 };

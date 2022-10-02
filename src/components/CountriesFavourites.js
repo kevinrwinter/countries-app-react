@@ -1,8 +1,10 @@
 import React from "react";
-import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
+
 import CountryCard from "./CountryCard";
 import SearchInput from "./SearchInput";
+import BackToTopBtn from "./BackToTopBtn";
 
 const CountriesFavourites = () => {
   const favourites = useSelector((state) => state.favourites);
@@ -37,6 +39,7 @@ const CountriesFavourites = () => {
             </Col>
           ))}
       </Row>
+      <BackToTopBtn />
     </Container>
   );
 };

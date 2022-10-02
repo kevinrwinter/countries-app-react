@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import countryService from "../../services/countries";
 
 import getAll from "../../services/countries";
 
@@ -23,14 +22,8 @@ export const countriesSlice = createSlice({
   },
 });
 
-// const [countries, setCountries] = useState([]);
-// const [isLoading, setIsLoading] = useState(true);
-// const [search, setSearch] = useState('');
-
-// Middleware getting data for useEffect
 export const initializeCountries = () => {
   return async (dispatch) => {
-    // const countries = await countryService.getAll();
     const countries = await getAll();
 
     dispatch(getCountries(countries));
@@ -38,8 +31,5 @@ export const initializeCountries = () => {
   };
 };
 
-// Actions
 export const { getCountries, isLoading, search } = countriesSlice.actions;
-
-// Store
 export default countriesSlice.reducer;
