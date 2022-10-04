@@ -1,5 +1,7 @@
 # countries-app-react
 
+[![Node.js CI](https://github.com/kevinrwinter/countries-app-react/actions/workflows/node.js.yml/badge.svg)](https://github.com/kevinrwinter/countries-app-react/actions/workflows/node.js.yml)
+
 Countries app made with [React](https://reactjs.org/) and [Redux Toolkit](https://redux-toolkit.js.org/).
 
 ---
